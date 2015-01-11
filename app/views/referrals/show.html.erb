@@ -1,0 +1,42 @@
+<h1>Your Referrals Status</h1>
+<br>
+Hi! <%= @shopcode.first_name %>, 
+<p>
+Thank you for shopping with us! You have earned $<%= @shopcode.store_credit %> with your Shopcode: <%= @shopcode.shop_code %>
+<br>
+You can redeem your credit when it reaches $50!
+<p>
+
+<!-- use html comment tag -->
+<!-- display the couponsales for the shopcode. -->
+<% if @shopcode.store_credit > 0 %>
+<table>
+	<thead>
+	<tr>
+		<td><b>Purchase Date &nbsp; </b></td>
+		<td><b>Name &nbsp; </b></td>
+		<td><b>&nbsp; Amount </b></td>
+		<td><b>&nbsp; Credit Earned</b></td>
+	</tr>
+	</thead>
+
+	<tbody>
+		<% @couponsales.each do |couponsale| %>
+		<tr>
+			<td><%= couponsale.purchase_date %></td>
+			<td><%= couponsale.first_name %></td>
+			<td align='right'>$<%= couponsale.amount %></td>
+			<td align='right'>$<%= couponsale.credit %></td>
+		</tr>
+	<% end %>
+	</tbody>
+	<tr><td colspan='4' align="right"> &nbsp; </td> </tr>
+	<tr>
+		<td colspan='4' align="right">
+<% flash[:message] = "" %>
+<%= link_to "Back", :back %> &nbsp; <%= link_to "Shop", "http://www.funtote.com/catalog.html" %>
+		</td>
+	</tr>
+</table>
+<% end %>
+

@@ -1,0 +1,31 @@
+<p>
+<br>
+<h1>My Referrals</h1>
+<br>
+
+
+<% form_tag("/show", :method => "get") do %>
+<table border="0" cellpadding="0" cellspacing="0" width="350">
+	<tr>
+		<td>Enter Your Shopcode:</td>
+		<td><%= flash[:shopcode].nil? ? text_field_tag("shopcode") : text_field_tag("shopcode", flash[:shopcode]) %></td>
+	</tr>
+	<tr>
+		<td>Enter Your Email:</td>
+		<td><%= flash[:email].nil? ? text_field_tag("email") : text_field_tag("email", flash[:email]) %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= submit_tag("View") %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= flash[:message] %></td>
+	</tr>
+	
+</table>
+<% end %>	
